@@ -11,7 +11,8 @@ if __name__ == '__main__':
     except RequestException as e:
         raise SystemExit(e)
 
-    print(f'The sstmk.ru site is working with code = {response.status_code}. Host ip address = {gethostbyname('sstmk.ru')}')
+    host = gethostbyname('sstmk.ru')
+    print(f"The sstmk.ru site is working with code = {response.status_code}. Host ip address = {host}")
     phones_urls = BeautifulSoup(response.text, 'lxml').select('a[href^="tel:"]')
     pattern = compile(r'(?:\+[\d]{1,3}?|[\d]{,3}?)\([\d]{1,}\)[\d]{1,}(?:-\d{1,}){2}')
 
